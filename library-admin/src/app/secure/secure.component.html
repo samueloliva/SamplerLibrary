@@ -1,0 +1,65 @@
+<div class="container">
+    <!-- <h2 *ngIf="user">Hello {{user.name}}</h2> -->
+    <div class="row">
+        <table class="table table-hover" >
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>ISBN</th>
+                    <th>Publication Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let b of books | paginate: { itemsPerPage: 5, currentPage: p }">
+                    <td>{{b.title}}</td>
+                    <td>{{b.isbn}}</td>
+                    <td>{{b.publication_date}}</td>
+                    <td>{{b.status}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row justify-content-md-center">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+
+    <br/>
+    <form [formGroup]="form" (submit)="submit()">
+        <div class="row justify-content-md-center">
+            <div class="form-group" >
+                <select class="form-control" aria-label="ISBN"
+                    formControlName="book_id" id="book_id">
+                    <option value="" selected> Open and choose the ISBN number </option>  
+                    <option *ngFor="let b of books" value={{b.id}}>{{b.isbn}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" 
+                formControlName="book_status" name="book_status" id="status1" value="CHECKIN">
+                <label class="form-check-label" for="status1">CHECKIN</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" 
+                formControlName="book_status" name="book_status" id="status2" value="CHECKOUT">
+                <label class="form-check-label" for="status2">CHECKOUT</label>
+            </div>            
+        </div>
+        <br/>
+        <div class="row justify-content-md-center">
+            <button type="submit" class="btn btn-primary" [disabled]="!form.valid">
+                Submit
+            </button>
+        </div>
+    </form>
+
+    <br>
+    <div *ngIf="message" class="alert alert-danger" role="alert" id="server-alert">
+        {{ message }}
+    </div>
+
+</div>
+
