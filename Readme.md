@@ -51,11 +51,11 @@ const data = {
 After installing them, you can put server on using the following commands:
 PHP:
 ```
-    php artisan serve
+php artisan serve
 ``` 
 AngularJS: 
 ```
-    ng serve
+ng serve
 ```
 Now you can access the interface:
 http://localhost:4200/
@@ -64,11 +64,11 @@ Or you can use the api endpoints through:
 http://127.0.0.1:8000
 
 The main routes are:
-http://localhost:8000/book
-http://localhost:8000/book/change
-http://localhost:8000/book/create
-http://localhost:8000/user
-http://localhost:8000/register
+- http://localhost:8000/book
+- http://localhost:8000/book/change
+- http://localhost:8000/book/create
+- http://localhost:8000/user
+- http://localhost:8000/register
 
 #### Login
 - Choose one user available in the table Users (default password secret); or
@@ -76,4 +76,6 @@ http://localhost:8000/register
 
 #### Unit tests
 Run the tests written in file library-api/tests/Feature/UserActionLogTest.php, through the command:
+```
 vendor/bin/phpunit
+```
