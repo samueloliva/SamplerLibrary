@@ -9,9 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.sass']
 })
 export class LoginComponent implements OnInit {
-
   form: any;
-  error: any;
 
   constructor(private fb: FormBuilder, 
               private http: HttpClient,
@@ -33,17 +31,17 @@ export class LoginComponent implements OnInit {
       password: formData.password,
       grant_type: 'password',
       client_id: 2,
-      client_secret: '59V2OHSbTSpAtrZgnfzKh0FxQnG2a6tXLXzdgwhY',
+      client_secret: 'NMcRne0jofULH62YoBnOmBhFHqRrYxWPZ1yhhQgI',
       scope: '*'
     };
 
-    this.http.post<any>('http://localhost:8000/oauth/token', data ).subscribe({
-      next: (result: any) => {
+    this.http.post<any>('http://localhost:8000/oauth/token', data ).subscribe(
+      result => {
         localStorage.setItem( 'token', result.access_token);
-        this.router.navigate(['/secure']);
+        this.router.navigate(['/secure']); 
       },
-      error: err => console.log(err)
-    });
+      err => console.log(err)
+    );
   }
 
 }
