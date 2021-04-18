@@ -61,7 +61,7 @@ Now you can access the interface:
 http://localhost:4200/
 
 Or you can use the api endpoints through:
-http://127.0.0.1:8000
+http://localhost:8000
 
 The main routes are:
 - http://localhost:8000/book
